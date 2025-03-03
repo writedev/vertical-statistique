@@ -25,8 +25,14 @@ class MyBot(commands.Bot):
     
     """chargements dans app commands"""
     
-    async def setup_hook(self):
+    async def on_connect(self):
         await self.tree.sync()
+    
+    """previent que le bot est en ligne """
+    
+    async def on_ready(self):
+        print(f"Logged in as {self.user} (ID: {self.user.id})")
+        print("------")
     
 
 bot = MyBot()
